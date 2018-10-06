@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kPC-2N-9rQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PassVault" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lockmidblue" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dk-dI-TYh">
+                                <rect key="frame" x="60" y="119" width="255" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8dk-dI-TYh" secondAttribute="height" multiplier="51:32" id="Hu9-vW-QbB"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="fZb-Zk-vcN"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Euv-zl-GW6">
+                                <rect key="frame" x="100" y="319" width="175" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                <state key="normal" title="Mail Vault">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ElP-ND-4YM" kind="show" identifier="mailVaultAction" id="TB0-UA-bDI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xu2-1h-olC">
+                                <rect key="frame" x="100" y="385" width="175" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="User Accounts"/>
+                                <connections>
+                                    <segue destination="6Lb-bc-CmI" kind="show" identifier="userAccountsAction" id="tMw-JU-J9D"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuR-oI-xdn">
+                                <rect key="frame" x="100" y="451" width="175" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Others"/>
+                                <connections>
+                                    <segue destination="2v5-YL-Fnx" kind="show" identifier="othersAction" id="lrW-90-6Xz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.59607843137254901" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kuR-oI-xdn" secondAttribute="trailing" constant="100" id="0rR-ep-ulE"/>
+                            <constraint firstItem="Xu2-1h-olC" firstAttribute="top" secondItem="Euv-zl-GW6" secondAttribute="bottom" constant="30" id="42T-d6-8TA"/>
+                            <constraint firstItem="Xu2-1h-olC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="5tV-ib-Shd"/>
+                            <constraint firstItem="8dk-dI-TYh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="97I-Ov-YV9"/>
+                            <constraint firstItem="Euv-zl-GW6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Deo-PI-n1h"/>
+                            <constraint firstItem="kuR-oI-xdn" firstAttribute="top" secondItem="Xu2-1h-olC" secondAttribute="bottom" constant="30" id="FKr-b4-fqP"/>
+                            <constraint firstItem="kuR-oI-xdn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="HSn-Sb-80o"/>
+                            <constraint firstItem="8dk-dI-TYh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="55" id="HTU-yt-7hA"/>
+                            <constraint firstItem="Euv-zl-GW6" firstAttribute="top" secondItem="8dk-dI-TYh" secondAttribute="bottom" constant="40" id="IVu-1F-bIg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Euv-zl-GW6" secondAttribute="trailing" constant="100" id="NcX-CG-rk3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8dk-dI-TYh" secondAttribute="trailing" constant="60" id="RqU-1Z-jLB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xu2-1h-olC" secondAttribute="trailing" constant="100" id="lyS-ro-GfA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aEG-9y-4Kj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="428" y="-564.46776611694156"/>
+        </scene>
+        <!--User Accounts-->
+        <scene sceneID="j4I-sQ-Sr4">
+            <objects>
+                <viewController id="6Lb-bc-CmI" customClass="UserAccountsController" customModule="PassVault" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oCT-CE-h08">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hwW-63-9gY">
+                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="OMt-SD-eyI" firstAttribute="bottom" secondItem="hwW-63-9gY" secondAttribute="bottom" constant="16" id="8uD-eI-p8z"/>
+                            <constraint firstItem="hwW-63-9gY" firstAttribute="top" secondItem="OMt-SD-eyI" secondAttribute="top" constant="16" id="bfS-UN-H6T"/>
+                            <constraint firstItem="hwW-63-9gY" firstAttribute="leading" secondItem="OMt-SD-eyI" secondAttribute="leading" constant="16" id="maa-pe-eed"/>
+                            <constraint firstItem="OMt-SD-eyI" firstAttribute="trailing" secondItem="hwW-63-9gY" secondAttribute="trailing" constant="16" id="y1Y-t1-m2W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OMt-SD-eyI"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="User Accounts" id="Tb2-Ln-G7z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yS4-HU-2BB"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jlb-1B-mQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="-564"/>
+        </scene>
+        <!--Other Accounts-->
+        <scene sceneID="a0D-bS-bI1">
+            <objects>
+                <viewController id="2v5-YL-Fnx" customClass="OthersController" customModule="PassVault" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CJ5-fa-J64">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gZx-h3-Ofs">
+                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gZx-h3-Ofs" firstAttribute="top" secondItem="od6-y1-v9p" secondAttribute="top" constant="16" id="6Ez-Bh-uaY"/>
+                            <constraint firstItem="gZx-h3-Ofs" firstAttribute="leading" secondItem="od6-y1-v9p" secondAttribute="leading" constant="16" id="M1P-Mg-h2g"/>
+                            <constraint firstItem="od6-y1-v9p" firstAttribute="trailing" secondItem="gZx-h3-Ofs" secondAttribute="trailing" constant="16" id="MXG-Ux-Dif"/>
+                            <constraint firstItem="od6-y1-v9p" firstAttribute="bottom" secondItem="gZx-h3-Ofs" secondAttribute="bottom" constant="16" id="Vx9-0I-EN1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="od6-y1-v9p"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Other Accounts" id="Q8r-SF-ws2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RdU-4n-gid"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4mm-Y8-uLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1262" y="94"/>
+        </scene>
+        <!--Mail Vault-->
+        <scene sceneID="pZg-po-i0N">
+            <objects>
+                <viewController id="ElP-ND-4YM" customClass="MailVaultController" customModule="PassVault" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dj2-DY-eC7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PEJ-bL-3j9">
+                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.59607843137254901" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PEJ-bL-3j9" firstAttribute="leading" secondItem="VvA-Ok-IlW" secondAttribute="leading" constant="16" id="6gb-39-k95"/>
+                            <constraint firstItem="PEJ-bL-3j9" firstAttribute="top" secondItem="VvA-Ok-IlW" secondAttribute="top" constant="16" id="DGE-JR-mI7"/>
+                            <constraint firstItem="VvA-Ok-IlW" firstAttribute="trailing" secondItem="PEJ-bL-3j9" secondAttribute="trailing" constant="16" id="Urd-bA-Cab"/>
+                            <constraint firstItem="VvA-Ok-IlW" firstAttribute="bottom" secondItem="PEJ-bL-3j9" secondAttribute="bottom" constant="16" id="swa-PW-Ztj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VvA-Ok-IlW"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Mail Vault" id="faf-hE-HYp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NWB-ti-oNY"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLv-BQ-spJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1261.5999999999999" y="-1218.440779610195"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Na2-zU-Nuz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kPC-2N-9rQ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G5u-Ru-Xdi">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Hrf-6F-Hkx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q9U-Fh-WDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-302" y="-564"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="lockmidblue" width="512" height="512"/>
+    </resources>
+</document>

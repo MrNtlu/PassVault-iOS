@@ -13,6 +13,11 @@
 		67026D4B2168D7580027284C /* PassVault.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 67026D492168D7580027284C /* PassVault.xcdatamodeld */; };
 		67026D4D2168D75A0027284C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67026D4C2168D75A0027284C /* Assets.xcassets */; };
 		67026D502168D75A0027284C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67026D4E2168D75A0027284C /* LaunchScreen.storyboard */; };
+		67026D5B2168E0610027284C /* MailVaultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67026D5A2168E0610027284C /* MailVaultController.swift */; };
+		67026D5D2168EF6E0027284C /* UserAccountsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67026D5C2168EF6E0027284C /* UserAccountsController.swift */; };
+		67026D5F2168EFF70027284C /* OthersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67026D5E2168EFF70027284C /* OthersController.swift */; };
+		67026D6621691B690027284C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67026D6421691B690027284C /* CustomCell.swift */; };
+		67026D6721691B690027284C /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67026D6521691B690027284C /* CustomCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		67026D4C2168D75A0027284C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67026D4F2168D75A0027284C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67026D512168D75A0027284C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		67026D5A2168E0610027284C /* MailVaultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailVaultController.swift; sourceTree = "<group>"; };
+		67026D5C2168EF6E0027284C /* UserAccountsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountsController.swift; sourceTree = "<group>"; };
+		67026D5E2168EFF70027284C /* OthersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersController.swift; sourceTree = "<group>"; };
+		67026D6421691B690027284C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		67026D6521691B690027284C /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,52 @@
 		67026D412168D7570027284C /* PassVault */ = {
 			isa = PBXGroup;
 			children = (
+				67026D6821691B760027284C /* CustomCells */,
 				67026D422168D7580027284C /* AppDelegate.swift */,
-				67026D442168D7580027284C /* ViewController.swift */,
-				67026D462168D7580027284C /* Main.storyboard */,
+				67026D592168D7C90027284C /*  Views */,
+				67026D582168D7BA0027284C /* Data Models */,
+				67026D572168D7AE0027284C /* Controller */,
 				67026D4C2168D75A0027284C /* Assets.xcassets */,
 				67026D4E2168D75A0027284C /* LaunchScreen.storyboard */,
 				67026D512168D75A0027284C /* Info.plist */,
 				67026D492168D7580027284C /* PassVault.xcdatamodeld */,
 			);
 			path = PassVault;
+			sourceTree = "<group>";
+		};
+		67026D572168D7AE0027284C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				67026D442168D7580027284C /* ViewController.swift */,
+				67026D5A2168E0610027284C /* MailVaultController.swift */,
+				67026D5C2168EF6E0027284C /* UserAccountsController.swift */,
+				67026D5E2168EFF70027284C /* OthersController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		67026D582168D7BA0027284C /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		67026D592168D7C90027284C /*  Views */ = {
+			isa = PBXGroup;
+			children = (
+				67026D462168D7580027284C /* Main.storyboard */,
+			);
+			path = " Views";
+			sourceTree = "<group>";
+		};
+		67026D6821691B760027284C /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				67026D6421691B690027284C /* CustomCell.swift */,
+				67026D6521691B690027284C /* CustomCell.xib */,
+			);
+			path = CustomCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +174,7 @@
 			files = (
 				67026D502168D75A0027284C /* LaunchScreen.storyboard in Resources */,
 				67026D4D2168D75A0027284C /* Assets.xcassets in Resources */,
+				67026D6721691B690027284C /* CustomCell.xib in Resources */,
 				67026D482168D7580027284C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67026D5F2168EFF70027284C /* OthersController.swift in Sources */,
 				67026D452168D7580027284C /* ViewController.swift in Sources */,
+				67026D5D2168EF6E0027284C /* UserAccountsController.swift in Sources */,
 				67026D4B2168D7580027284C /* PassVault.xcdatamodeld in Sources */,
 				67026D432168D7580027284C /* AppDelegate.swift in Sources */,
+				67026D6621691B690027284C /* CustomCell.swift in Sources */,
+				67026D5B2168E0610027284C /* MailVaultController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,8 +338,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z7M7NW52W;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PassVault/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -295,6 +348,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MrNtlu.PassVault;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -304,8 +358,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Z7M7NW52W;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PassVault/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -313,6 +368,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.MrNtlu.PassVault;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
