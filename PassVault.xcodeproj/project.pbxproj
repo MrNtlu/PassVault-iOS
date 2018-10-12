@@ -18,7 +18,6 @@
 		67026D5F2168EFF70027284C /* OthersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67026D5E2168EFF70027284C /* OthersController.swift */; };
 		67026D6621691B690027284C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67026D6421691B690027284C /* CustomCell.swift */; };
 		67026D6721691B690027284C /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67026D6521691B690027284C /* CustomCell.xib */; };
-		6719CCEE216CD38600AA9009 /* MailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6719CCED216CD38600AA9009 /* MailModel.swift */; };
 		679F13162170F00100DFAC9C /* DataModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679F13152170F00100DFAC9C /* DataModelController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 		67026D5E2168EFF70027284C /* OthersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersController.swift; sourceTree = "<group>"; };
 		67026D6421691B690027284C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		67026D6521691B690027284C /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
-		6719CCED216CD38600AA9009 /* MailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailModel.swift; sourceTree = "<group>"; };
 		679F13152170F00100DFAC9C /* DataModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				67026D492168D7580027284C /* PassVault.xcdatamodeld */,
-				6719CCED216CD38600AA9009 /* MailModel.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -194,7 +191,6 @@
 			files = (
 				67026D5F2168EFF70027284C /* OthersController.swift in Sources */,
 				67026D452168D7580027284C /* ViewController.swift in Sources */,
-				6719CCEE216CD38600AA9009 /* MailModel.swift in Sources */,
 				67026D5D2168EF6E0027284C /* UserAccountsController.swift in Sources */,
 				67026D4B2168D7580027284C /* PassVault.xcdatamodeld in Sources */,
 				67026D432168D7580027284C /* AppDelegate.swift in Sources */,
