@@ -9,18 +9,29 @@
 import UIKit
 
 class CustomCell: UITableViewCell {
-
-    //https://www.youtube.com/watch?v=zAWO9rldyUE
+    @IBOutlet weak var idMailText: UILabel!
     
+    @IBOutlet weak var passwordText: UILabel!
+    
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBOutlet weak var editButton: UIButton!
+    
+    var tableView:UITableView!
+    
+    @IBAction func deleteButton(_ sender: UIButton) {
+        tableView.beginUpdates()
+        
+        tableView.endUpdates()
+    }
+    
+    @IBAction func editButton(_ sender: UIButton) {
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

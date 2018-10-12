@@ -86,22 +86,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hwW-63-9gY">
-                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                                <rect key="frame" x="8" y="72" width="359" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserAccountsCell" id="sAC-qh-8hA">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sAC-qh-8hA" id="OQw-WO-lVV">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OMt-SD-eyI" firstAttribute="bottom" secondItem="hwW-63-9gY" secondAttribute="bottom" constant="16" id="8uD-eI-p8z"/>
-                            <constraint firstItem="hwW-63-9gY" firstAttribute="top" secondItem="OMt-SD-eyI" secondAttribute="top" constant="16" id="bfS-UN-H6T"/>
-                            <constraint firstItem="hwW-63-9gY" firstAttribute="leading" secondItem="OMt-SD-eyI" secondAttribute="leading" constant="16" id="maa-pe-eed"/>
-                            <constraint firstItem="OMt-SD-eyI" firstAttribute="trailing" secondItem="hwW-63-9gY" secondAttribute="trailing" constant="16" id="y1Y-t1-m2W"/>
+                            <constraint firstItem="OMt-SD-eyI" firstAttribute="bottom" secondItem="hwW-63-9gY" secondAttribute="bottom" constant="8" id="8uD-eI-p8z"/>
+                            <constraint firstItem="hwW-63-9gY" firstAttribute="top" secondItem="OMt-SD-eyI" secondAttribute="top" constant="8" id="bfS-UN-H6T"/>
+                            <constraint firstItem="hwW-63-9gY" firstAttribute="leading" secondItem="OMt-SD-eyI" secondAttribute="leading" constant="8" id="maa-pe-eed"/>
+                            <constraint firstItem="OMt-SD-eyI" firstAttribute="trailing" secondItem="hwW-63-9gY" secondAttribute="trailing" constant="8" id="y1Y-t1-m2W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OMt-SD-eyI"/>
                     </view>
                     <navigationItem key="navigationItem" title="User Accounts" id="Tb2-Ln-G7z">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yS4-HU-2BB"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yS4-HU-2BB">
+                            <connections>
+                                <action selector="addButton:" destination="6Lb-bc-CmI" id="5rO-ld-FuO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="userAccountsTable" destination="hwW-63-9gY" id="lz7-gK-HVc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jlb-1B-mQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,22 +133,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gZx-h3-Ofs">
-                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                                <rect key="frame" x="8" y="72" width="359" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OthersCell" id="b69-A2-oLD">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b69-A2-oLD" id="j7V-my-hVa">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="gZx-h3-Ofs" firstAttribute="top" secondItem="od6-y1-v9p" secondAttribute="top" constant="16" id="6Ez-Bh-uaY"/>
-                            <constraint firstItem="gZx-h3-Ofs" firstAttribute="leading" secondItem="od6-y1-v9p" secondAttribute="leading" constant="16" id="M1P-Mg-h2g"/>
-                            <constraint firstItem="od6-y1-v9p" firstAttribute="trailing" secondItem="gZx-h3-Ofs" secondAttribute="trailing" constant="16" id="MXG-Ux-Dif"/>
-                            <constraint firstItem="od6-y1-v9p" firstAttribute="bottom" secondItem="gZx-h3-Ofs" secondAttribute="bottom" constant="16" id="Vx9-0I-EN1"/>
+                            <constraint firstItem="gZx-h3-Ofs" firstAttribute="top" secondItem="od6-y1-v9p" secondAttribute="top" constant="8" id="6Ez-Bh-uaY"/>
+                            <constraint firstItem="gZx-h3-Ofs" firstAttribute="leading" secondItem="od6-y1-v9p" secondAttribute="leading" constant="8" id="M1P-Mg-h2g"/>
+                            <constraint firstItem="od6-y1-v9p" firstAttribute="trailing" secondItem="gZx-h3-Ofs" secondAttribute="trailing" constant="8" id="MXG-Ux-Dif"/>
+                            <constraint firstItem="od6-y1-v9p" firstAttribute="bottom" secondItem="gZx-h3-Ofs" secondAttribute="bottom" constant="8" id="Vx9-0I-EN1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="od6-y1-v9p"/>
                     </view>
                     <navigationItem key="navigationItem" title="Other Accounts" id="Q8r-SF-ws2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RdU-4n-gid"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RdU-4n-gid">
+                            <connections>
+                                <action selector="addButton:" destination="2v5-YL-Fnx" id="qlq-PL-M6A"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="othersTable" destination="gZx-h3-Ofs" id="yI7-9E-fuM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4mm-Y8-uLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -146,22 +180,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PEJ-bL-3j9">
-                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                                <rect key="frame" x="8" y="72" width="359" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MailVaultCell" id="W38-bq-caF">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W38-bq-caF" id="abE-eP-Avd">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000000000002" green="0.59607843137254901" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="PEJ-bL-3j9" firstAttribute="leading" secondItem="VvA-Ok-IlW" secondAttribute="leading" constant="16" id="6gb-39-k95"/>
-                            <constraint firstItem="PEJ-bL-3j9" firstAttribute="top" secondItem="VvA-Ok-IlW" secondAttribute="top" constant="16" id="DGE-JR-mI7"/>
-                            <constraint firstItem="VvA-Ok-IlW" firstAttribute="trailing" secondItem="PEJ-bL-3j9" secondAttribute="trailing" constant="16" id="Urd-bA-Cab"/>
-                            <constraint firstItem="VvA-Ok-IlW" firstAttribute="bottom" secondItem="PEJ-bL-3j9" secondAttribute="bottom" constant="16" id="swa-PW-Ztj"/>
+                            <constraint firstItem="PEJ-bL-3j9" firstAttribute="leading" secondItem="VvA-Ok-IlW" secondAttribute="leading" constant="8" id="6gb-39-k95"/>
+                            <constraint firstItem="PEJ-bL-3j9" firstAttribute="top" secondItem="VvA-Ok-IlW" secondAttribute="top" constant="8" id="DGE-JR-mI7"/>
+                            <constraint firstItem="VvA-Ok-IlW" firstAttribute="trailing" secondItem="PEJ-bL-3j9" secondAttribute="trailing" constant="8" id="Urd-bA-Cab"/>
+                            <constraint firstItem="VvA-Ok-IlW" firstAttribute="bottom" secondItem="PEJ-bL-3j9" secondAttribute="bottom" constant="8" id="swa-PW-Ztj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VvA-Ok-IlW"/>
                     </view>
                     <navigationItem key="navigationItem" title="Mail Vault" id="faf-hE-HYp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NWB-ti-oNY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NWB-ti-oNY">
+                            <connections>
+                                <action selector="addButton:" destination="ElP-ND-4YM" id="YfW-hF-WRt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mailTableView" destination="PEJ-bL-3j9" id="2FT-4f-uhm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLv-BQ-spJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
