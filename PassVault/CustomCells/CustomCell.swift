@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol CellDelegate: class {
+    func didDeleteTapped(index: IndexPath)
+    func didEditTapped(index: IndexPath)
+}
+
 class CustomCell: UITableViewCell {
     @IBOutlet weak var idMailText: UILabel!
     
@@ -17,19 +22,21 @@ class CustomCell: UITableViewCell {
     
     @IBOutlet weak var editButton: UIButton!
     
+    //Protocol Inits
+    var delegateCell:CellDelegate?
+    var indexPath:IndexPath?
+    
     var tableView:UITableView!
     
     @IBAction func deleteButton(_ sender: UIButton) {
-        tableView.beginUpdates()
-        
-        tableView.endUpdates()
+        delegateCell?.didDeleteTapped(index: indexPath!)
     }
     
-    @IBAction func editButton(_ sender: UIButton) {
-        tableView.beginUpdates()
-        tableView.endUpdates()
+    
+    @IBAction func editButton(_ sender: Any) {
+        delegateCell?.didEditTapped(index: indexPath!)
     }
-        
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

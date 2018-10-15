@@ -36,7 +36,7 @@
                         </constraints>
                         <state key="normal" image="icons8-edit-filled-50"/>
                         <connections>
-                            <action selector="editButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zua-F5-5r9"/>
+                            <action selector="editButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0ot-sO-DK9"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="ID/Mail:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-I6-5jv">
@@ -94,7 +94,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icons8-delete-bin-filled-50" width="50" height="50"/>
-        <image name="icons8-edit-filled-50" width="50" height="50"/>
+        <image name="icons8-delete-bin-filled-50" width="37.5" height="37.5"/>
+        <image name="icons8-edit-filled-50" width="37.5" height="37.5"/>
     </resources>
 </document>
