@@ -13,12 +13,43 @@ class OthersController: UIViewController,UITableViewDelegate,UITableViewDataSour
     
     var arrayOfData=[Others]()
     let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
-
-    @IBAction func addButton(_ sender: UIBarButtonItem) {
-        
-    }
     
     @IBOutlet weak var othersTable: UITableView!
+    
+    func showAlertDialog()->UIAlertController{
+        var descTextField=UITextField()
+        var passwordTextField=UITextField()
+
+        let alert=UIAlertController(title: title, message: "", preferredStyle: .alert)
+        
+        let action=UIAlertAction(title: "Add Account", style: .default) {
+            (action)  in
+            let newItem=Others(context: self.context.viewContext)
+            newItem.desc=descTextField.text!
+            newItem.password=passwordTextField.text!
+            self.arrayOfData.append(newItem)
+            DataModelController.saveItems(context: self.context, tableView: self.othersTable)
+        }
+        alert.addTextField {
+            (textfield) in
+            
+            textfield.placeholder="Description"
+            descTextField=textfield
+        }
+        alert.addTextField {
+            (textfield) in
+            
+            textfield.placeholder="Password"
+            passwordTextField=textfield
+        }
+        
+        alert.addAction(action)
+        return alert
+    }
+
+    @IBAction func addButton(_ sender: UIBarButtonItem) {
+        present (showAlertDialog(), animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +57,8 @@ class OthersController: UIViewController,UITableViewDelegate,UITableViewDataSour
         othersTable.dataSource=self
         
         othersTable.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "mailVaultCell")
+        let request:NSFetchRequest<Others>=Others.fetchRequest()
+        arrayOfData=DataModelController.loadItems(context: context,request: request as! NSFetchRequest<NSFetchRequestResult>) as! [Others]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
