@@ -20,8 +20,8 @@ class DataModelController {
         tableView.reloadData()
     }
     
-    static func loadItems(context:NSPersistentContainer)-> [Any]{
-        let request:NSFetchRequest<Accounts>=Accounts.fetchRequest()
+    static func loadItems(context:NSPersistentContainer,request: NSFetchRequest<NSFetchRequestResult>)-> [Any]{
+        //let request:NSFetchRequest<Accounts>=Accounts.fetchRequest()
         var returnArray=[Any]()
         do{
             returnArray=try context.viewContext.fetch(request)

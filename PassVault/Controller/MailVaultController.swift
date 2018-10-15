@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class MailVaultController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    //Video 250
+
     var arrayOfData=[Accounts]()
     let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
 
@@ -58,7 +58,8 @@ class MailVaultController: UIViewController,UITableViewDelegate,UITableViewDataS
         mailTableView.delegate=self
         mailTableView.dataSource=self
         mailTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "mailVaultCell")
-        arrayOfData=DataModelController.loadItems(context: context) as! [Accounts]
+        let request:NSFetchRequest<Accounts>=Accounts.fetchRequest()
+        arrayOfData=DataModelController.loadItems(context: context,request: request as! NSFetchRequest<NSFetchRequestResult>) as! [Accounts]
         
     }
     

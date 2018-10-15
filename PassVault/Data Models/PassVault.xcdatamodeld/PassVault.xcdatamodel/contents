@@ -4,7 +4,18 @@
         <attribute name="idMail" attributeType="String" syncable="YES"/>
         <attribute name="password" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Others" representedClassName=".Others" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" attributeType="String" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UserAccounts" representedClassName=".UserAccounts" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" attributeType="String" syncable="YES"/>
+        <attribute name="idMail" attributeType="String" syncable="YES"/>
+        <attribute name="password" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Accounts" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="UserAccounts" positionX="-63" positionY="0" width="128" height="90"/>
+        <element name="Others" positionX="-54" positionY="27" width="128" height="75"/>
     </elements>
 </model>

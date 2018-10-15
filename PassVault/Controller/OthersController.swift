@@ -7,15 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
-struct otherCellData {
-    let text:String!
-    let pass: String!
-}
 class OthersController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    var arrayOfData=[otherCellData]()
-    
+    var arrayOfData=[Others]()
+    let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
+
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         
     }
@@ -26,17 +24,14 @@ class OthersController: UIViewController,UITableViewDelegate,UITableViewDataSour
         super.viewDidLoad()
         othersTable.delegate=self
         othersTable.dataSource=self
-        arrayOfData=[otherCellData(text: "test", pass: "testpass\n/ntesttsa\netasdasd\ntesada"),
-                     otherCellData(text: "test2", pass: "testpass2"),
-                     otherCellData(text: "test3", pass: "testpass3")]
         
         othersTable.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "mailVaultCell")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=othersTable.dequeueReusableCell(withIdentifier: "mailVaultCell",for:indexPath) as! CustomCell
-        cell.idMailText.text=arrayOfData[indexPath.row].text
-        cell.passwordText.text=arrayOfData[indexPath.row].pass
+        cell.idMailText.text=arrayOfData[indexPath.row].desc
+        cell.passwordText.text=arrayOfData[indexPath.row].password
         cell.tableView=self.othersTable
         return cell
     }
