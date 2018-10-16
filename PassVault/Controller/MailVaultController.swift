@@ -24,11 +24,16 @@ class MailVaultController: UIViewController{
         
         let action=UIAlertAction(title: "Add", style: .default) {
             (action)  in
-            let newItem=Accounts(context: self.context.viewContext)
-            newItem.idMail=idMailTextField.text!
-            newItem.password=passwordTextField.text!
-            self.arrayOfData.append(newItem)
-            DataModelController.saveItems(context: self.context, tableView: self.mailTableView)
+            if (!(idMailTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)!){
+                let newItem=Accounts(context: self.context.viewContext)
+                newItem.idMail=idMailTextField.text!
+                newItem.password=passwordTextField.text!
+                self.arrayOfData.append(newItem)
+                DataModelController.saveItems(context: self.context, tableView: self.mailTableView)
+            }
+            else{
+                self.present (DataModelController.errorMessage(title: "Error!", message: "Couldn't save. Please don't leave anything empty."), animated: true, completion: nil)
+            }
         }
         
         alert.addTextField {
@@ -45,6 +50,7 @@ class MailVaultController: UIViewController{
         }
         
         alert.addAction(action)
+        
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
             (action) in
@@ -125,7 +131,7 @@ extension MailVaultController:CellDelegate{
             newItem.password=passwordTextField.text!
             self.context.viewContext.delete(self.arrayOfData[index.row])
             self.arrayOfData.remove(at: index.row)
-            self.arrayOfData.insert(newItem, at: index.row)
+            self.arrayOfData.append(newItem)
             DataModelController.saveItems(context: self.context, tableView: self.mailTableView)
         }
         alert.addTextField {

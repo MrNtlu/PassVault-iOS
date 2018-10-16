@@ -31,6 +31,12 @@ class DataModelController {
         return returnArray
     }
     
+    static func errorMessage(title:String,message:String)->UIAlertController{
+        let alert=UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        return alert
+    }
+    
 //    func updateItems(indexPath:Int,idMail:String,password:String){
 //        arrayOfData[indexPath].idMail=idMail
 //        arrayOfData[indexPath].password=password
