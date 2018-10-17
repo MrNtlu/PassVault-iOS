@@ -13,8 +13,20 @@ class UserAccountsController: UIViewController {
     
     var arrayOfData=[UserAccounts]()
     let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    var arrayHidden=[Bool]()
+    var mainController:DataModelController?
 
     @IBOutlet weak var userAccountsTable: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userAccountsTable.delegate=self
+        userAccountsTable.dataSource=self
+        userAccountsTable.register(UINib(nibName: "CustomDescCell", bundle: nil), forCellReuseIdentifier: "userAccountsCell")
+        let request:NSFetchRequest<UserAccounts>=UserAccounts.fetchRequest()
+        mainController=DataModelController.init(tableView: self.userAccountsTable, context: self.context)
+        arrayOfData=mainController!.loadItems(request: request as! NSFetchRequest<NSFetchRequestResult>) as! [UserAccounts]
+    }
     
     func showAlertDialog()->UIAlertController{
         var idMailTextField=UITextField()
@@ -31,12 +43,13 @@ class UserAccountsController: UIViewController {
                 newItem.password=passwordTextField.text!
                 newItem.desc=descTextField.text!
                 self.arrayOfData.append(newItem)
-                DataModelController.saveItems(context: self.context, tableView: self.userAccountsTable)
+                self.mainController!.saveItems()
             }
             else{
                 self.present(DataModelController.errorMessage(title: "Error!", message: "Couldn't save. Please don't leave anything empty."),animated: true,completion: nil)
             }
         }
+        
         alert.addTextField {
             (textfield) in
             
@@ -57,20 +70,17 @@ class UserAccountsController: UIViewController {
         }
         
         alert.addAction(action)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
+            (action) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
         return alert
     }
     
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         present (showAlertDialog(), animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        userAccountsTable.delegate=self
-        userAccountsTable.dataSource=self
-        userAccountsTable.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "mailVaultCell")
-        let request:NSFetchRequest<UserAccounts>=UserAccounts.fetchRequest()
-        arrayOfData=DataModelController.loadItems(context: context,request: request as! NSFetchRequest<NSFetchRequestResult>) as! [UserAccounts]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,11 +92,26 @@ class UserAccountsController: UIViewController {
     }
 }
 extension UserAccountsController:UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mainController!.hideMessageController(indexPath: indexPath,arrayHidden: self.arrayHidden,password: self.arrayOfData[indexPath.row].password!,passwordLabel: (self.userAccountsTable.cellForRow(at: indexPath) as! CustomDescCell).passwordText)
+        self.arrayHidden[indexPath.row] = !(self.arrayHidden[indexPath.row])
+        userAccountsTable.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell=userAccountsTable.dequeueReusableCell(withIdentifier: "mailVaultCell",for:indexPath) as! CustomCell
+        if arrayOfData.count != arrayHidden.count && arrayOfData.count>arrayHidden.count {
+            arrayHidden.append(false)
+        }
+        
+        let cell=userAccountsTable.dequeueReusableCell(withIdentifier: "userAccountsCell",for:indexPath) as! CustomDescCell
         cell.idMailText.text=arrayOfData[indexPath.row].idMail
-        cell.passwordText.text=arrayOfData[indexPath.row].password
-        //arrayOfData[indexPath.row].desc="Description"
+        if !arrayHidden[indexPath.row] {
+            cell.passwordText.text=mainController!.hideThePass(pass: arrayOfData[indexPath.row].password!)
+        }else{
+            cell.passwordText.text=arrayOfData[indexPath.row].password!
+        }
+        cell.descText.text=arrayOfData[indexPath.row].desc
         cell.delegateCell=self
         cell.indexPath=indexPath
         cell.tableView=self.userAccountsTable
@@ -107,7 +132,7 @@ extension UserAccountsController:CellDelegate{
             self.context.viewContext.delete(self.arrayOfData[index.row])
             self.arrayOfData.remove(at: index.row)
             self.userAccountsTable.reloadData()
-            DataModelController.saveItems(context: self.context, tableView: self.userAccountsTable)
+            self.mainController!.saveItems()
         }))
         
         present (alert, animated: true, completion: nil)
@@ -129,18 +154,18 @@ extension UserAccountsController:CellDelegate{
             self.context.viewContext.delete(self.arrayOfData[index.row])
             self.arrayOfData.remove(at: index.row)
             self.arrayOfData.append(newItem)
-            DataModelController.saveItems(context: self.context, tableView: self.userAccountsTable)
+            self.mainController!.saveItems()
         }
         alert.addTextField {
             (textfield) in
             
-            textfield.text=(self.userAccountsTable.cellForRow(at: index) as! CustomCell).idMailText.text!
+            textfield.text=(self.userAccountsTable.cellForRow(at: index) as! CustomDescCell).idMailText.text!
             idMailTextField=textfield
         }
         alert.addTextField {
             (textfield) in
 
-            textfield.text=(self.userAccountsTable.cellForRow(at: index) as! CustomCell).passwordText.text!
+            textfield.text=self.arrayOfData[index.row].password
             passwordTextField=textfield
         }
         
@@ -160,6 +185,4 @@ extension UserAccountsController:CellDelegate{
         
         present (alert, animated: true, completion: nil)
     }
-    
-    
 }

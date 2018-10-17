@@ -39,26 +39,29 @@
                             <action selector="editButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0ot-sO-DK9"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="ID/Mail:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-I6-5jv">
-                        <rect key="frame" x="74" y="13" width="60" height="21.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="ID/Mail:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-I6-5jv">
+                        <rect key="frame" x="40" y="13" width="87" height="21.5"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                         <color key="textColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyq-X2-zgJ">
-                        <rect key="frame" x="51" y="55" width="83" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyq-X2-zgJ">
+                        <rect key="frame" x="44" y="55" width="83" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="83" id="wZw-xf-QyK"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5w-uV-yqy">
-                        <rect key="frame" x="142" y="14" width="170" height="21.5"/>
+                        <rect key="frame" x="135" y="14" width="177" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkM-Ij-YqT">
-                        <rect key="frame" x="142" y="56" width="170" height="21.5"/>
+                        <rect key="frame" x="135" y="56" width="177" height="21.5"/>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -67,18 +70,19 @@
                 <constraints>
                     <constraint firstItem="bEa-Su-iYs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="3gY-e8-zJp"/>
                     <constraint firstAttribute="bottom" secondItem="bkM-Ij-YqT" secondAttribute="bottom" constant="8" id="96V-23-tjE"/>
-                    <constraint firstItem="BJy-I6-5jv" firstAttribute="leading" secondItem="bEa-Su-iYs" secondAttribute="trailing" constant="42" id="CuK-Gg-vNR"/>
+                    <constraint firstItem="BJy-I6-5jv" firstAttribute="leading" secondItem="bEa-Su-iYs" secondAttribute="trailing" constant="8" id="CuK-Gg-vNR"/>
                     <constraint firstAttribute="trailing" secondItem="K5w-uV-yqy" secondAttribute="trailing" constant="8" id="FDo-nW-cyF"/>
                     <constraint firstItem="BJy-I6-5jv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="UG6-Md-jTa"/>
                     <constraint firstAttribute="trailing" secondItem="bkM-Ij-YqT" secondAttribute="trailing" constant="8" id="Uma-4z-5LG"/>
                     <constraint firstItem="Iyq-X2-zgJ" firstAttribute="top" secondItem="BJy-I6-5jv" secondAttribute="bottom" constant="20.5" id="VEu-Dr-yei"/>
-                    <constraint firstItem="Iyq-X2-zgJ" firstAttribute="leading" secondItem="HbX-ta-R61" secondAttribute="trailing" constant="19" id="Yn1-zy-ou0"/>
+                    <constraint firstItem="Iyq-X2-zgJ" firstAttribute="leading" secondItem="HbX-ta-R61" secondAttribute="trailing" constant="12" id="Yn1-zy-ou0"/>
                     <constraint firstItem="bkM-Ij-YqT" firstAttribute="leading" secondItem="Iyq-X2-zgJ" secondAttribute="trailing" constant="8" id="c44-K2-8XS"/>
                     <constraint firstItem="bkM-Ij-YqT" firstAttribute="top" secondItem="K5w-uV-yqy" secondAttribute="bottom" constant="20.5" id="g74-PB-gms"/>
                     <constraint firstItem="K5w-uV-yqy" firstAttribute="leading" secondItem="BJy-I6-5jv" secondAttribute="trailing" constant="8" id="hqN-b7-DjF"/>
                     <constraint firstItem="bEa-Su-iYs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="iqj-3G-yV6"/>
                     <constraint firstItem="HbX-ta-R61" firstAttribute="top" secondItem="bEa-Su-iYs" secondAttribute="bottom" constant="18" id="mrY-Ke-6vP"/>
                     <constraint firstItem="K5w-uV-yqy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="nYr-dF-ZGj"/>
+                    <constraint firstItem="K5w-uV-yqy" firstAttribute="width" secondItem="bkM-Ij-YqT" secondAttribute="width" id="xWT-3f-Qtt"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
@@ -87,6 +91,7 @@
             <connections>
                 <outlet property="deleteButton" destination="bEa-Su-iYs" id="5lo-NS-pJg"/>
                 <outlet property="editButton" destination="HbX-ta-R61" id="k4m-gb-mAb"/>
+                <outlet property="idMailLabel" destination="BJy-I6-5jv" id="iNN-NU-FP3"/>
                 <outlet property="idMailText" destination="K5w-uV-yqy" id="RJf-LD-5Yd"/>
                 <outlet property="passwordText" destination="bkM-Ij-YqT" id="Sy7-UB-jbn"/>
             </connections>

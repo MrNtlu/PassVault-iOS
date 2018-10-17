@@ -13,8 +13,20 @@ class MailVaultController: UIViewController{
     
     var arrayOfData=[Accounts]()
     let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    var arrayHidden=[Bool]()
+    var mainController:DataModelController?
 
     @IBOutlet weak var mailTableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mailTableView.delegate=self
+        mailTableView.dataSource=self
+        mailTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "mailVaultCell")
+        let request:NSFetchRequest<Accounts>=Accounts.fetchRequest()
+        mainController=DataModelController.init(tableView: self.mailTableView, context: self.context)
+        arrayOfData=mainController!.loadItems(request: request as! NSFetchRequest<NSFetchRequestResult>) as! [Accounts]
+    }
     
     func showAlertDialog()->UIAlertController{
         var idMailTextField=UITextField()
@@ -28,8 +40,9 @@ class MailVaultController: UIViewController{
                 let newItem=Accounts(context: self.context.viewContext)
                 newItem.idMail=idMailTextField.text!
                 newItem.password=passwordTextField.text!
+                self.arrayHidden.append(false)
                 self.arrayOfData.append(newItem)
-                DataModelController.saveItems(context: self.context, tableView: self.mailTableView)
+                self.mainController!.saveItems()
             }
             else{
                 self.present (DataModelController.errorMessage(title: "Error!", message: "Couldn't save. Please don't leave anything empty."), animated: true, completion: nil)
@@ -64,15 +77,6 @@ class MailVaultController: UIViewController{
         present (showAlertDialog(), animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mailTableView.delegate=self
-        mailTableView.dataSource=self
-        mailTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "mailVaultCell")
-        let request:NSFetchRequest<Accounts>=Accounts.fetchRequest()
-        arrayOfData=DataModelController.loadItems(context: context,request: request as! NSFetchRequest<NSFetchRequestResult>) as! [Accounts]
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfData.count
     }
@@ -80,18 +84,29 @@ class MailVaultController: UIViewController{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        mailTableView.deselectRow(at: indexPath, animated: true)
-    }
 }
 
 extension MailVaultController:UITableViewDelegate,UITableViewDataSource{
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mainController!.hideMessageController(indexPath: indexPath,arrayHidden: self.arrayHidden,password: self.arrayOfData[indexPath.row].password!,passwordLabel: (self.mailTableView.cellForRow(at: indexPath) as! CustomCell).passwordText)
+        self.arrayHidden[indexPath.row] = !(self.arrayHidden[indexPath.row])
+        mailTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if arrayOfData.count != arrayHidden.count && arrayOfData.count>arrayHidden.count {
+            arrayHidden.append(false)
+        }
+            
         let cell=mailTableView.dequeueReusableCell(withIdentifier: "mailVaultCell",for:indexPath) as! CustomCell
         cell.idMailText.text=arrayOfData[indexPath.row].idMail
-        cell.passwordText.text=arrayOfData[indexPath.row].password
+//        if !arrayHidden[indexPath.row] {
+//            cell.passwordText.text=mainController!.hideThePass(pass: arrayOfData[indexPath.row].password!)
+//        }else{
+//            cell.passwordText.text=arrayOfData[indexPath.row].password!
+//        }
+        mainController!.starredOrText(passwordText: cell.passwordText, arrayHidden: arrayHidden[indexPath.row], passwordString: arrayOfData[indexPath.row].password!)
         cell.tableView=self.mailTableView
         cell.delegateCell=self
         cell.indexPath=indexPath
@@ -112,7 +127,7 @@ extension MailVaultController:CellDelegate{
             self.context.viewContext.delete(self.arrayOfData[index.row])
             self.arrayOfData.remove(at: index.row)
             self.mailTableView.reloadData()
-            DataModelController.saveItems(context: self.context, tableView: self.mailTableView)
+            self.mainController!.saveItems()
         }))
         
         present (alert, animated: true, completion: nil)
@@ -132,7 +147,7 @@ extension MailVaultController:CellDelegate{
             self.context.viewContext.delete(self.arrayOfData[index.row])
             self.arrayOfData.remove(at: index.row)
             self.arrayOfData.append(newItem)
-            DataModelController.saveItems(context: self.context, tableView: self.mailTableView)
+            self.mainController!.saveItems()
         }
         alert.addTextField {
             (textfield) in
@@ -143,7 +158,7 @@ extension MailVaultController:CellDelegate{
         alert.addTextField {
             (textfield) in
             
-            textfield.text=(self.mailTableView.cellForRow(at: index) as! CustomCell).passwordText.text!
+            textfield.text=self.arrayOfData[index.row].password
             passwordTextField=textfield
         }
         
@@ -157,28 +172,3 @@ extension MailVaultController:CellDelegate{
         present (alert, animated: true, completion: nil)
     }
 }
-    
-//    func saveItems(){
-//        do{
-//            try context.save()
-//        }catch{
-//            print("Error saving context \(error)")
-//        }
-//        self.mailTableView.reloadData()
-//    }
-//
-//    func loadItems(){
-//        let request:NSFetchRequest<Accounts>=Accounts.fetchRequest()
-//        do{
-//            arrayOfData=try context.fetch(request)
-//        }catch{
-//            print("Error while loading \(error)")
-//        }
-//    }
-    
-//    func updateItems(indexPath:Int,idMail:String,password:String){
-//        arrayOfData[indexPath].idMail=idMail
-//        arrayOfData[indexPath].password=password
-//        saveItems()
-//    }
-

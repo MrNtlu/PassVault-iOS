@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userAccountsCell" rowHeight="110" id="KGk-i7-Jjw" customClass="CustomDescCell" customModule="PassVault" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="109.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEa-Su-iYs">
+                        <rect key="frame" x="8" y="12" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="0N7-Bt-K4e"/>
+                            <constraint firstAttribute="height" constant="24" id="xTB-6a-1nh"/>
+                        </constraints>
+                        <state key="normal" title="" image="icons8-delete-bin-filled-50"/>
+                        <connections>
+                            <action selector="deleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hVy-MI-z47"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HbX-ta-R61">
+                        <rect key="frame" x="8" y="54" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="Z8P-tM-AJv"/>
+                            <constraint firstAttribute="height" constant="24" id="sQr-rh-6lX"/>
+                        </constraints>
+                        <state key="normal" image="icons8-edit-filled-50"/>
+                        <connections>
+                            <action selector="editButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1Xa-UL-rIB"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="ID/Mail:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-I6-5jv">
+                        <rect key="frame" x="44" y="13" width="83" height="21.5"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc.:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="416-KR-60g">
+                        <rect key="frame" x="44" y="80" width="83" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5w-uV-yqy">
+                        <rect key="frame" x="135" y="13" width="177" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkM-Ij-YqT">
+                        <rect key="frame" x="135" y="46.5" width="177" height="21.5"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohj-DR-pwq">
+                        <rect key="frame" x="135" y="80" width="177" height="21.5"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iyq-X2-zgJ">
+                        <rect key="frame" x="44" y="46.5" width="83" height="21.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="83" id="YTr-6R-DVC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.59607843140000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BJy-I6-5jv" firstAttribute="trailing" secondItem="Iyq-X2-zgJ" secondAttribute="trailing" id="229-2w-zcA"/>
+                    <constraint firstItem="HbX-ta-R61" firstAttribute="top" secondItem="bEa-Su-iYs" secondAttribute="bottom" constant="18" id="7MK-nI-b8m"/>
+                    <constraint firstItem="bkM-Ij-YqT" firstAttribute="top" secondItem="K5w-uV-yqy" secondAttribute="bottom" constant="12" id="AKI-f0-o9i"/>
+                    <constraint firstItem="416-KR-60g" firstAttribute="leading" secondItem="Iyq-X2-zgJ" secondAttribute="leading" id="BaF-2a-q3u"/>
+                    <constraint firstItem="416-KR-60g" firstAttribute="centerY" secondItem="ohj-DR-pwq" secondAttribute="centerY" id="DaN-Nu-Nyi"/>
+                    <constraint firstItem="bkM-Ij-YqT" firstAttribute="leading" secondItem="Iyq-X2-zgJ" secondAttribute="trailing" constant="8" id="E8P-1V-mTm"/>
+                    <constraint firstAttribute="trailing" secondItem="K5w-uV-yqy" secondAttribute="trailing" constant="8" id="IUm-eA-twX"/>
+                    <constraint firstItem="HbX-ta-R61" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="J28-QY-z2l"/>
+                    <constraint firstItem="Iyq-X2-zgJ" firstAttribute="trailing" secondItem="416-KR-60g" secondAttribute="trailing" id="JId-yb-7wi"/>
+                    <constraint firstItem="ohj-DR-pwq" firstAttribute="top" secondItem="bkM-Ij-YqT" secondAttribute="bottom" constant="12" id="KHw-aK-z13"/>
+                    <constraint firstItem="416-KR-60g" firstAttribute="top" secondItem="Iyq-X2-zgJ" secondAttribute="bottom" constant="12" id="KtK-l6-Uf7"/>
+                    <constraint firstItem="Iyq-X2-zgJ" firstAttribute="centerY" secondItem="bkM-Ij-YqT" secondAttribute="centerY" id="Pgo-f5-40I"/>
+                    <constraint firstItem="BJy-I6-5jv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Q5H-ed-Jwh"/>
+                    <constraint firstAttribute="bottom" secondItem="ohj-DR-pwq" secondAttribute="bottom" constant="8" id="QSf-Jn-2H7"/>
+                    <constraint firstItem="Iyq-X2-zgJ" firstAttribute="leading" secondItem="HbX-ta-R61" secondAttribute="trailing" constant="12" id="RZC-1E-3O6"/>
+                    <constraint firstItem="BJy-I6-5jv" firstAttribute="leading" secondItem="Iyq-X2-zgJ" secondAttribute="leading" id="TfW-3r-5NH"/>
+                    <constraint firstItem="K5w-uV-yqy" firstAttribute="leading" secondItem="BJy-I6-5jv" secondAttribute="trailing" constant="8" id="U38-nE-DDI"/>
+                    <constraint firstItem="Iyq-X2-zgJ" firstAttribute="top" secondItem="BJy-I6-5jv" secondAttribute="bottom" constant="12" id="W4R-Ud-2zf"/>
+                    <constraint firstAttribute="trailing" secondItem="ohj-DR-pwq" secondAttribute="trailing" constant="8" id="YK2-Qp-hva"/>
+                    <constraint firstItem="bkM-Ij-YqT" firstAttribute="width" secondItem="K5w-uV-yqy" secondAttribute="width" id="bty-Ez-jWN"/>
+                    <constraint firstAttribute="trailing" secondItem="bkM-Ij-YqT" secondAttribute="trailing" constant="8" id="cfu-Nf-qvZ"/>
+                    <constraint firstItem="bEa-Su-iYs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="dpn-WV-K0n"/>
+                    <constraint firstItem="ohj-DR-pwq" firstAttribute="leading" secondItem="416-KR-60g" secondAttribute="trailing" constant="8" id="n2v-Cq-1Kn"/>
+                    <constraint firstItem="BJy-I6-5jv" firstAttribute="centerY" secondItem="K5w-uV-yqy" secondAttribute="centerY" id="pDF-1i-zc7"/>
+                    <constraint firstItem="ohj-DR-pwq" firstAttribute="width" secondItem="K5w-uV-yqy" secondAttribute="width" id="t0h-VS-YuP"/>
+                    <constraint firstItem="bEa-Su-iYs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vj8-sp-blh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="deleteButton" destination="bEa-Su-iYs" id="RHC-st-en0"/>
+                <outlet property="descText" destination="ohj-DR-pwq" id="YC2-in-HIj"/>
+                <outlet property="editButton" destination="HbX-ta-R61" id="c4i-mm-Ogj"/>
+                <outlet property="idMailText" destination="K5w-uV-yqy" id="Ctt-8m-EUh"/>
+                <outlet property="passwordText" destination="bkM-Ij-YqT" id="Ez9-Ul-rHJ"/>
+            </connections>
+            <point key="canvasLocation" x="113.59999999999999" y="205.99700149925039"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icons8-delete-bin-filled-50" width="37.5" height="37.5"/>
+        <image name="icons8-edit-filled-50" width="37.5" height="37.5"/>
+    </resources>
+</document>

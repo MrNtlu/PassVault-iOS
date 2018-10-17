@@ -11,7 +11,21 @@ import CoreData
 
 class DataModelController {
     
-    static func saveItems(context:NSPersistentContainer,tableView:UITableView){
+    var tableView:UITableView
+    var context:NSPersistentContainer
+    
+    init(tableView:UITableView,context:NSPersistentContainer) {
+        self.tableView=tableView
+        self.context=context
+    }
+    
+    static func errorMessage(title:String,message:String)->UIAlertController{
+        let alert=UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        return alert
+    }
+    
+    func saveItems(){
         do{
             try context.viewContext.save()
         }catch{
@@ -20,7 +34,7 @@ class DataModelController {
         tableView.reloadData()
     }
     
-    static func loadItems(context:NSPersistentContainer,request: NSFetchRequest<NSFetchRequestResult>)-> [Any]{
+    func loadItems(request: NSFetchRequest<NSFetchRequestResult>)-> [Any]{
         //let request:NSFetchRequest<Accounts>=Accounts.fetchRequest()
         var returnArray=[Any]()
         do{
@@ -31,10 +45,33 @@ class DataModelController {
         return returnArray
     }
     
-    static func errorMessage(title:String,message:String)->UIAlertController{
-        let alert=UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        return alert
+    func hideThePass(pass:String)->String{
+        var password:String=""
+        for _ in 1...pass.count{
+            password+="*"
+        }
+        return password
+    }
+    
+    func hideMessageController(indexPath:IndexPath,arrayHidden:[Bool],password:String,passwordLabel:UILabel){
+        tableView.beginUpdates()
+        if arrayHidden[indexPath.row] {
+            passwordLabel.text!=hideThePass(pass:password)
+            
+        }
+        else{
+            passwordLabel.text!=password
+        }
+        tableView.endUpdates()
+
+    }
+    
+    func starredOrText(passwordText:UILabel,arrayHidden:Bool,passwordString:String){
+        if !arrayHidden {
+            passwordText.text=hideThePass(pass: passwordString)
+        }else{
+            passwordText.text=passwordString
+        }
     }
     
 //    func updateItems(indexPath:Int,idMail:String,password:String){

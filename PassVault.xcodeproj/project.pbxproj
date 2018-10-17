@@ -19,6 +19,8 @@
 		67026D6621691B690027284C /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67026D6421691B690027284C /* CustomCell.swift */; };
 		67026D6721691B690027284C /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67026D6521691B690027284C /* CustomCell.xib */; };
 		679F13162170F00100DFAC9C /* DataModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679F13152170F00100DFAC9C /* DataModelController.swift */; };
+		67F4CAC7217772BF00A34AB5 /* CustomDescCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F4CAC5217772BF00A34AB5 /* CustomDescCell.swift */; };
+		67F4CAC8217772BF00A34AB5 /* CustomDescCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67F4CAC6217772BF00A34AB5 /* CustomDescCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		67026D6421691B690027284C /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		67026D6521691B690027284C /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		679F13152170F00100DFAC9C /* DataModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelController.swift; sourceTree = "<group>"; };
+		67F4CAC5217772BF00A34AB5 /* CustomDescCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDescCell.swift; sourceTree = "<group>"; };
+		67F4CAC6217772BF00A34AB5 /* CustomDescCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomDescCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 			children = (
 				67026D6421691B690027284C /* CustomCell.swift */,
 				67026D6521691B690027284C /* CustomCell.xib */,
+				67F4CAC5217772BF00A34AB5 /* CustomDescCell.swift */,
+				67F4CAC6217772BF00A34AB5 /* CustomDescCell.xib */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -178,6 +184,7 @@
 				67026D502168D75A0027284C /* LaunchScreen.storyboard in Resources */,
 				67026D4D2168D75A0027284C /* Assets.xcassets in Resources */,
 				67026D6721691B690027284C /* CustomCell.xib in Resources */,
+				67F4CAC8217772BF00A34AB5 /* CustomDescCell.xib in Resources */,
 				67026D482168D7580027284C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +202,7 @@
 				67026D4B2168D7580027284C /* PassVault.xcdatamodeld in Sources */,
 				67026D432168D7580027284C /* AppDelegate.swift in Sources */,
 				679F13162170F00100DFAC9C /* DataModelController.swift in Sources */,
+				67F4CAC7217772BF00A34AB5 /* CustomDescCell.swift in Sources */,
 				67026D6621691B690027284C /* CustomCell.swift in Sources */,
 				67026D5B2168E0610027284C /* MailVaultController.swift in Sources */,
 			);

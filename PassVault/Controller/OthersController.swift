@@ -13,8 +13,21 @@ class OthersController: UIViewController {
     
     var arrayOfData=[Others]()
     let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
+    var arrayHidden=[Bool]()
+    var mainController:DataModelController?
+    
     
     @IBOutlet weak var othersTable: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        othersTable.delegate=self
+        othersTable.dataSource=self
+        othersTable.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "mailVaultCell")
+        let request:NSFetchRequest<Others>=Others.fetchRequest()
+        mainController=DataModelController.init(tableView: self.othersTable, context: self.context)
+        arrayOfData=mainController!.loadItems(request: request as! NSFetchRequest<NSFetchRequestResult>) as! [Others]
+    }
     
     func showAlertDialog()->UIAlertController{
         var descTextField=UITextField()
@@ -24,12 +37,18 @@ class OthersController: UIViewController {
         
         let action=UIAlertAction(title: "Add Account", style: .default) {
             (action)  in
-            let newItem=Others(context: self.context.viewContext)
-            newItem.desc=descTextField.text!
-            newItem.password=passwordTextField.text!
-            self.arrayOfData.append(newItem)
-            DataModelController.saveItems(context: self.context, tableView: self.othersTable)
+            if (!(descTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)!){
+                let newItem=Others(context: self.context.viewContext)
+                newItem.desc=descTextField.text!
+                newItem.password=passwordTextField.text!
+                self.arrayOfData.append(newItem)
+                self.mainController!.saveItems()
+            }
+            else{
+                self.present (DataModelController.errorMessage(title: "Error!", message: "Couldn't save. Please don't leave anything empty."), animated: true, completion: nil)
+            }
         }
+        
         alert.addTextField {
             (textfield) in
             
@@ -44,21 +63,17 @@ class OthersController: UIViewController {
         }
         
         alert.addAction(action)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {
+            (action) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
         return alert
     }
 
     @IBAction func addButton(_ sender: UIBarButtonItem) {
         present (showAlertDialog(), animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        othersTable.delegate=self
-        othersTable.dataSource=self
-        
-        othersTable.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "mailVaultCell")
-        let request:NSFetchRequest<Others>=Others.fetchRequest()
-        arrayOfData=DataModelController.loadItems(context: context,request: request as! NSFetchRequest<NSFetchRequestResult>) as! [Others]
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,10 +85,26 @@ class OthersController: UIViewController {
     }
 }
 extension OthersController:UITableViewDelegate,UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mainController!.hideMessageController(indexPath: indexPath,arrayHidden: self.arrayHidden,password: self.arrayOfData[indexPath.row].password!,passwordLabel: (self.othersTable.cellForRow(at: indexPath) as! CustomCell).passwordText)
+        self.arrayHidden[indexPath.row] = !(self.arrayHidden[indexPath.row])
+        othersTable.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if arrayOfData.count != arrayHidden.count && arrayOfData.count>arrayHidden.count {
+            arrayHidden.append(false)
+        }
+        
         let cell=othersTable.dequeueReusableCell(withIdentifier: "mailVaultCell",for:indexPath) as! CustomCell
         cell.idMailText.text=arrayOfData[indexPath.row].desc
-        cell.passwordText.text=arrayOfData[indexPath.row].password
+        if !arrayHidden[indexPath.row] {
+            cell.passwordText.text=mainController!.hideThePass(pass: arrayOfData[indexPath.row].password!)
+        }else{
+            cell.passwordText.text=arrayOfData[indexPath.row].password!
+        }
+        cell.idMailLabel.text="Desc.:"
         cell.delegateCell=self
         cell.indexPath=indexPath
         cell.tableView=self.othersTable
@@ -94,7 +125,7 @@ extension OthersController:CellDelegate{
             self.context.viewContext.delete(self.arrayOfData[index.row])
             self.arrayOfData.remove(at: index.row)
             self.othersTable.reloadData()
-            DataModelController.saveItems(context: self.context, tableView: self.othersTable)
+            self.mainController!.saveItems()
         }))
         
         present (alert, animated: true, completion: nil)
@@ -114,7 +145,7 @@ extension OthersController:CellDelegate{
             self.context.viewContext.delete(self.arrayOfData[index.row])
             self.arrayOfData.remove(at: index.row)
             self.arrayOfData.append(newItem)
-            DataModelController.saveItems(context: self.context, tableView: self.othersTable)
+            self.mainController!.saveItems()
         }
         
         alert.addTextField {
@@ -127,7 +158,7 @@ extension OthersController:CellDelegate{
         alert.addTextField {
             (textfield) in
             
-            textfield.text=(self.othersTable.cellForRow(at: index) as! CustomCell).passwordText.text!
+            textfield.text=self.arrayOfData[index.row].password
             passwordTextField=textfield
         }
         

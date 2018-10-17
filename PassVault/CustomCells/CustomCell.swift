@@ -14,6 +14,9 @@ protocol CellDelegate: class {
 }
 
 class CustomCell: UITableViewCell {
+    
+    @IBOutlet weak var idMailLabel: UILabel!
+    
     @IBOutlet weak var idMailText: UILabel!
     
     @IBOutlet weak var passwordText: UILabel!
