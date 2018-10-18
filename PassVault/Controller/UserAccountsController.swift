@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class UserAccountsController: UIViewController {
+class UserAccountsController: UIViewController,UIGestureRecognizerDelegate {
     
     var arrayOfData=[UserAccounts]()
     let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
@@ -26,6 +26,24 @@ class UserAccountsController: UIViewController {
         let request:NSFetchRequest<UserAccounts>=UserAccounts.fetchRequest()
         mainController=DataModelController.init(tableView: self.userAccountsTable, context: self.context)
         arrayOfData=mainController!.loadItems(request: request as! NSFetchRequest<NSFetchRequestResult>) as! [UserAccounts]
+        setupLongPressGesture()
+    }
+    
+    func setupLongPressGesture() {
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        longPressGesture.minimumPressDuration = 1.0 // 1 second press
+        longPressGesture.delegate = self
+        self.userAccountsTable.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer){
+        if gestureRecognizer.state == .ended {
+            let touchPoint = gestureRecognizer.location(in: self.userAccountsTable)
+            if let indexPath = userAccountsTable.indexPathForRow(at: touchPoint) {
+                UIPasteboard.general.string=self.arrayOfData[indexPath.row].password!
+                mainController!.showToast(message: "Copied",view: self.view)
+            }
+        }
     }
     
     func showAlertDialog()->UIAlertController{

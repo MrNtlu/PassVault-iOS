@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MailVaultController: UIViewController{
+class MailVaultController: UIViewController,UIGestureRecognizerDelegate{
     
     var arrayOfData=[Accounts]()
     let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
@@ -26,6 +26,24 @@ class MailVaultController: UIViewController{
         let request:NSFetchRequest<Accounts>=Accounts.fetchRequest()
         mainController=DataModelController.init(tableView: self.mailTableView, context: self.context)
         arrayOfData=mainController!.loadItems(request: request as! NSFetchRequest<NSFetchRequestResult>) as! [Accounts]
+        setupLongPressGesture()
+    }
+    
+    func setupLongPressGesture() {
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        longPressGesture.minimumPressDuration = 1.0 // 1 second press
+        longPressGesture.delegate = self
+        self.mailTableView.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer){
+        if gestureRecognizer.state == .ended {
+            let touchPoint = gestureRecognizer.location(in: self.mailTableView)
+            if let indexPath = mailTableView.indexPathForRow(at: touchPoint) {
+                UIPasteboard.general.string=self.arrayOfData[indexPath.row].password!
+                mainController!.showToast(message: "Copied",view: self.view)
+            }
+        }
     }
     
     func showAlertDialog()->UIAlertController{

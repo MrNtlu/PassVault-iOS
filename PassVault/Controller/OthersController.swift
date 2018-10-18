@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class OthersController: UIViewController {
+class OthersController: UIViewController,UIGestureRecognizerDelegate {
     
     var arrayOfData=[Others]()
     let context=(UIApplication.shared.delegate as! AppDelegate).persistentContainer
@@ -27,6 +27,23 @@ class OthersController: UIViewController {
         let request:NSFetchRequest<Others>=Others.fetchRequest()
         mainController=DataModelController.init(tableView: self.othersTable, context: self.context)
         arrayOfData=mainController!.loadItems(request: request as! NSFetchRequest<NSFetchRequestResult>) as! [Others]
+    }
+    
+    func setupLongPressGesture() {
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        longPressGesture.minimumPressDuration = 1.0 // 1 second press
+        longPressGesture.delegate = self
+        self.othersTable.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer){
+        if gestureRecognizer.state == .ended {
+            let touchPoint = gestureRecognizer.location(in: self.othersTable)
+            if let indexPath = othersTable.indexPathForRow(at: touchPoint) {
+                UIPasteboard.general.string=self.arrayOfData[indexPath.row].password!
+                mainController!.showToast(message: "Copied",view: self.view)
+            }
+        }
     }
     
     func showAlertDialog()->UIAlertController{
